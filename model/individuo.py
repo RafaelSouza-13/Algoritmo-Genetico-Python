@@ -35,9 +35,18 @@ class Individuo:
     def crossover(self, outro_individuo):
         corte = round(random() * len(self.cromossomo))
         filho1 = self.cromossomo[0:corte] + outro_individuo.cromossomo[corte::]
-        print(f"Pai cromossomo: {self.cromossomo[0:corte]} e Mae cromossomo {outro_individuo.cromossomo[corte::]}")
         filho2 = outro_individuo.cromossomo[0:corte] + self.cromossomo[corte::]
-        print(f"Mae cromossomo {outro_individuo.cromossomo[0:corte]} e Pai cromossomo {self.cromossomo[corte::]}")
         filhos = [Individuo(self.espacos, self.valores, self.limite_espaco, filho1, self.geracao+1),
                   Individuo(self.espacos, self.valores, self.limite_espaco, filho2, self.geracao+1)]
         return filhos
+    
+    def mutacao(self, taxa_mutacao):
+        print(f"Antes da mutacao: {self.cromossomo}")
+        for i in range(len(self.cromossomo)):
+            if(random() < taxa_mutacao):
+                if(self.cromossomo[i] == "1"):
+                    self.cromossomo[i] = "0"
+                else:
+                    self.cromossomo[i] = "1"
+        print(f"Depois da mutacao: {self.cromossomo}")
+        return self

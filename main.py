@@ -51,5 +51,5 @@ print(f"Espaço utilizado individuo 2: {individuo2.espaco_usado}")
 
 lista = individuo1.crossover(individuo2)
 
-print(lista[0].cromossomo)
-print(lista[1].cromossomo)
+individuo1.mutacao(0.05)
+individuo2.mutacao(0.05)
