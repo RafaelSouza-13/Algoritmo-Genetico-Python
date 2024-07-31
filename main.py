@@ -33,3 +33,10 @@ individuo1 = Individuo(espacos, valores, limite)
 print(individuo1.espacos)
 print(individuo1.valores)
 print(individuo1.cromossomos)
+
+individuo1.avaliacao()
+for i in range(len(lista_produtos)):
+    if(individuo1.cromossomos[i] == "1"):
+        print(f"Produto: {lista_produtos[i].nome}")
+print(f"Avaliacao: {individuo1.nota_avaliacao}")
+print(f"Espaço utilizado: {individuo1.espaco_usado}")
