@@ -30,13 +30,26 @@ for produto in lista_produtos:
     nomes.append(produto.nome)
 
 individuo1 = Individuo(espacos, valores, limite)
-print(individuo1.espacos)
-print(individuo1.valores)
-print(individuo1.cromossomos)
 
-individuo1.avaliacao()
 for i in range(len(lista_produtos)):
-    if(individuo1.cromossomos[i] == "1"):
-        print(f"Produto: {lista_produtos[i].nome}")
-print(f"Avaliacao: {individuo1.nota_avaliacao}")
-print(f"Espaço utilizado: {individuo1.espaco_usado}")
+    if(individuo1.cromossomo[i] == "1"):
+        print(f"Produtos individuo 1: {lista_produtos[i].nome}")
+individuo1.avaliacao()
+print(f"Avaliacao individuo 1: {individuo1.nota_avaliacao}")
+print(f"Espaço utilizado individuo 1: {individuo1.espaco_usado}")
+
+
+print("Segundo individuo")
+
+individuo2 = Individuo(espacos, valores, limite)
+for i in range(len(lista_produtos)):
+    if(individuo2.cromossomo[i] == "1"):
+        print(f"Produtos individuo 2: {lista_produtos[i].nome}")
+individuo2.avaliacao()
+print(f"Avaliacao individuo 2: {individuo2.nota_avaliacao}")
+print(f"Espaço utilizado individuo 2: {individuo2.espaco_usado}")
+
+lista = individuo1.crossover(individuo2)
+
+print(lista[0].cromossomo)
+print(lista[1].cromossomo)
