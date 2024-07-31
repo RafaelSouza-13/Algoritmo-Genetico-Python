@@ -1,4 +1,5 @@
 from model.produto import Produto
+from model.individuo import Individuo
 
 lista_produtos = []
 lista_produtos.append(Produto("Geladeira Dako", 0.751, 999.90))
@@ -17,3 +18,18 @@ lista_produtos.append(Produto("Notebook Lenovo", 0.498, 1999.90))
 lista_produtos.append(Produto("Notebook Asus", 0.527, 3999.00))
 for produto in lista_produtos:
     print(produto.nome)
+
+espacos = []
+valores = []
+nomes = []
+limite = 3
+
+for produto in lista_produtos:
+    espacos.append(produto.espaco)
+    valores.append(produto.valor)
+    nomes.append(produto.nome)
+
+individuo1 = Individuo(espacos, valores, limite)
+print(individuo1.espacos)
+print(individuo1.valores)
+print(individuo1.cromossomos)
