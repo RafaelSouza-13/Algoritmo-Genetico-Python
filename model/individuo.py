@@ -1,6 +1,6 @@
 from random import random
 
-class Individuo:
+class Individuo():
     def __init__(self, espacos, valores, limite_espaco, cromossomo=None, geracao=0):
         self.espacos = espacos
         self.valores = valores

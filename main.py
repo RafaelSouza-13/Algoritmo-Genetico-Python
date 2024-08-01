@@ -1,3 +1,4 @@
+from model.algoritmo_genetico import AlgoritmoGenetico
 from model.produto import Produto
 from model.individuo import Individuo
 
@@ -23,33 +24,14 @@ espacos = []
 valores = []
 nomes = []
 limite = 3
+tamanho_populacao = 20
 
 for produto in lista_produtos:
     espacos.append(produto.espaco)
     valores.append(produto.valor)
     nomes.append(produto.nome)
 
-individuo1 = Individuo(espacos, valores, limite)
-
-for i in range(len(lista_produtos)):
-    if(individuo1.cromossomo[i] == "1"):
-        print(f"Produtos individuo 1: {lista_produtos[i].nome}")
-individuo1.avaliacao()
-print(f"Avaliacao individuo 1: {individuo1.nota_avaliacao}")
-print(f"Espaço utilizado individuo 1: {individuo1.espaco_usado}")
-
-
-print("Segundo individuo")
-
-individuo2 = Individuo(espacos, valores, limite)
-for i in range(len(lista_produtos)):
-    if(individuo2.cromossomo[i] == "1"):
-        print(f"Produtos individuo 2: {lista_produtos[i].nome}")
-individuo2.avaliacao()
-print(f"Avaliacao individuo 2: {individuo2.nota_avaliacao}")
-print(f"Espaço utilizado individuo 2: {individuo2.espaco_usado}")
-
-lista = individuo1.crossover(individuo2)
-
-individuo1.mutacao(0.05)
-individuo2.mutacao(0.05)
+ag = AlgoritmoGenetico(tamanho_populacao)
+ag.inicializa_populacao(espacos, valores, limite)
+for i in range(ag.tamanho_populacao):
+    print(f"Individuo {i+1}: {ag.populacao[i].cromossomo}")
