@@ -8,22 +8,27 @@ class AlgoritmoGenetico():
         self.populacao = []
         self.geracao = 0
         self.melhor_solucao = 0
+        self.melhores_por_geracoes = {}
 
     def inicializa_populacao(self, espacos, valores, limite_espaco):
         for i in range(self.tamanho_populacao):
             self.populacao.append(Individuo(espacos, valores, limite_espaco))
-        for individuo in self.populacao:
-            individuo.avaliacao()
-        self.ordena_populacao()
+        self.avalia_populacao()
         self.melhor_solucao = self.populacao[0]
+        self.melhores_por_geracoes[self.geracao] = self.populacao[0]
     
     def ordena_populacao(self):
         self.populacao = sorted(self.populacao, key=lambda populaca: populaca.nota_avaliacao, reverse=True)
 
-    # def melhor_individuo(self, individuo):
-    #     if(individuo.nota_avaliacao > self.melhor_solucao.nota_avaliacao):
-    #         self.melhor_solucao = individuo
+    def melhor_individuo(self, individuo):
+        if(individuo.nota_avaliacao > self.melhor_solucao.nota_avaliacao):
+            self.melhor_solucao = individuo
     
+    def avalia_populacao(self):
+        for individuo in self.populacao:
+            individuo.avaliacao()
+        self.ordena_populacao()
+
     def soma_avaliacoes(self):
         soma = 0
         for individuo in self.populacao:
@@ -41,8 +46,23 @@ class AlgoritmoGenetico():
             i += 1
         return pai_indice
 
-    def gera_individuos(self, soma_avaliacao):
+    def gera_individuos(self, soma_avaliacao, taxa_mutacao):
+        nova_populacao = []
         for individuos in range(0, self.tamanho_populacao, 2):
             pai1 = self.seleciona_pai(soma_avaliacao)
             pai2 = self.seleciona_pai(soma_avaliacao)
+            filhos = self.populacao[pai1].crossover(self.populacao[pai2])
+            nova_populacao.append(filhos[0].mutacao(taxa_mutacao))
+            nova_populacao.append(filhos[1].mutacao(taxa_mutacao))
+        self.populacao = list(nova_populacao)
+        self.geracao += 1
+        self.avalia_populacao()
+        self.melhor_individuo(self.populacao[0])
+        self.melhores_por_geracoes[self.geracao] = self.populacao[0]
+    
+    def melhores(self):
+        for i in range(len(self.melhores_por_geracoes)):
+            print(self.melhores_por_geracoes[i])
+            print()
+
 

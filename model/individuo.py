@@ -41,12 +41,13 @@ class Individuo():
         return filhos
     
     def mutacao(self, taxa_mutacao):
-        print(f"Antes da mutacao: {self.cromossomo}")
         for i in range(len(self.cromossomo)):
             if(random() < taxa_mutacao):
                 if(self.cromossomo[i] == "1"):
                     self.cromossomo[i] = "0"
                 else:
                     self.cromossomo[i] = "1"
-        print(f"Depois da mutacao: {self.cromossomo}")
         return self
+
+    def __str__(self) -> str:
+        return f"""Geracao: {self.geracao} \nNota: {self.nota_avaliacao} \nespaço usado: {self.espaco_usado} \ncromossomo: {self.cromossomo}"""
