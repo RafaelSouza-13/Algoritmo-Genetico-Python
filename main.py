@@ -35,4 +35,5 @@ ag.inicializa_populacao(espacos, valores, limite)
 print(f"Melhor solução para o problema: {ag.melhor_solucao.cromossomo}")
 print(f"Nota: {ag.melhor_solucao.nota_avaliacao}")
 soma = ag.soma_avaliacoes()
-print(f"Soma das avaliacoes: {soma}")
+ag.gera_individuos(soma)
+

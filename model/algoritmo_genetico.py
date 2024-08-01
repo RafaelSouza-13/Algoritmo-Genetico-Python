@@ -1,3 +1,4 @@
+from random import random
 from model.individuo import Individuo
 
 
@@ -28,3 +29,20 @@ class AlgoritmoGenetico():
         for individuo in self.populacao:
             soma += individuo.nota_avaliacao
         return soma
+    
+    def seleciona_pai(self, soma_avaliacao):
+        pai_indice = -1
+        valor_sorteado = random() * soma_avaliacao
+        soma = 0
+        i = 0
+        while(i < len(self.populacao) and soma < valor_sorteado):
+            soma += self.populacao[i].nota_avaliacao
+            pai_indice += 1
+            i += 1
+        return pai_indice
+
+    def gera_individuos(self, soma_avaliacao):
+        for individuos in range(0, self.tamanho_populacao, 2):
+            pai1 = self.seleciona_pai(soma_avaliacao)
+            pai2 = self.seleciona_pai(soma_avaliacao)
+
