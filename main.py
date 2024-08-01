@@ -25,6 +25,7 @@ nomes = []
 limite = 3
 tamanho_populacao = 20
 taxa_mutacao = 0.05
+numero_geracoes = 100
 
 for produto in lista_produtos:
     espacos.append(produto.espaco)
@@ -33,19 +34,15 @@ for produto in lista_produtos:
 
 ag = AlgoritmoGenetico(tamanho_populacao)
 ag.inicializa_populacao(espacos, valores, limite)
-print(f"Melhor solução para o problema: {ag.melhor_solucao.cromossomo}")
-print(f"Nota: {ag.melhor_solucao.nota_avaliacao}")
-for i in ag.populacao:
-    print(i.cromossomo)
-    print(i.nota_avaliacao)
-print("/////////")
-soma = ag.soma_avaliacoes()
-ag.gera_individuos(soma, taxa_mutacao)
-print(f"Melhor solução para o problema: {ag.melhor_solucao.cromossomo}")
-print(f"Nota: {ag.melhor_solucao.nota_avaliacao}")
-for i in ag.populacao:
-    print(i.cromossomo)
-    print(i.nota_avaliacao)
-print("/////////")
 
+for i in range(0, numero_geracoes - 1):
+    soma = ag.soma_avaliacoes()
+    ag.gera_individuos(soma, taxa_mutacao)
+    
+print("---------- Gerações ----------")
 ag.melhores()
+print("------------------------------")
+print("\n\n")
+print("---------- Melhor Resultado ----------")
+print(ag.melhor_solucao)
+print("--------------------------------------")
