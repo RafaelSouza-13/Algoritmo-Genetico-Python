@@ -8,14 +8,14 @@ class AlgoritmoGenetico():
         self.populacao = []
         self.geracao = 0
         self.melhor_solucao = 0
-        self.melhores_por_geracoes = {}
+        self.lista_solucoes = []
 
     def inicializa_populacao(self, espacos, valores, limite_espaco):
         for i in range(self.tamanho_populacao):
             self.populacao.append(Individuo(espacos, valores, limite_espaco))
         self.avalia_populacao()
         self.melhor_solucao = self.populacao[0]
-        self.melhores_por_geracoes[self.geracao] = self.populacao[0]
+        self.lista_solucoes.append(self.populacao[0])
     
     def ordena_populacao(self):
         self.populacao = sorted(self.populacao, key=lambda populaca: populaca.nota_avaliacao, reverse=True)
@@ -58,11 +58,11 @@ class AlgoritmoGenetico():
         self.geracao += 1
         self.avalia_populacao()
         self.melhor_individuo(self.populacao[0])
-        self.melhores_por_geracoes[self.geracao] = self.populacao[0]
+        self.lista_solucoes.append(self.populacao[0])
     
     def melhores(self):
-        for i in range(len(self.melhores_por_geracoes)):
-            print(self.melhores_por_geracoes[i])
+        for i in range(len(self.lista_solucoes)):
+            print(self.lista_solucoes[i])
             print()
     
     def produtos_selecionados(self, individuo, nomes):

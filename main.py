@@ -1,5 +1,6 @@
 from model.algoritmo_genetico import AlgoritmoGenetico
 from model.produto import Produto
+import matplotlib.pyplot as plt
 
 lista_produtos = []
 lista_produtos.append(Produto("Geladeira Dako", 0.751, 999.90))
@@ -34,6 +35,7 @@ ag = AlgoritmoGenetico(tamanho_populacao)
 ag.executa(espacos, valores, limite, numero_geracoes, taxa_mutacao)
 
 print("---------- Gerações ----------")
+print("---------- Melhores ----------")
 ag.melhores()
 print("------------------------------")
 print("\n\n")
@@ -41,3 +43,10 @@ print("---------- Melhor Resultado ----------")
 print(ag.melhor_solucao)
 ag.produtos_selecionados(ag.melhor_solucao, nomes)
 print("--------------------------------------")
+resultados_valores = []
+for i in range(len(ag.lista_solucoes)):
+    resultados_valores.append(ag.lista_solucoes[i].nota_avaliacao)
+    
+plt.plot(resultados_valores)
+plt.title("Acompanhamento das gerações")
+plt.show()
