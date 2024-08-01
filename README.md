@@ -28,7 +28,7 @@ Antes de começar, certifique-se de ter o Python 3.x instalado em seu sistema. V
         python3 -m venv venv
 
 
-    3.2 Ative o ambiente
+    Ative o ambiente
     - No macOS e Linux:
 
         ```bash
