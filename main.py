@@ -1,6 +1,5 @@
 from model.algoritmo_genetico import AlgoritmoGenetico
 from model.produto import Produto
-from model.individuo import Individuo
 
 lista_produtos = []
 lista_produtos.append(Produto("Geladeira Dako", 0.751, 999.90))
@@ -17,8 +16,8 @@ lista_produtos.append(Produto("Geladeira Brastemp", 0.635, 849.00))
 lista_produtos.append(Produto("Geladeira Consul", 0.870, 1199.89))
 lista_produtos.append(Produto("Notebook Lenovo", 0.498, 1999.90))
 lista_produtos.append(Produto("Notebook Asus", 0.527, 3999.00))
-for produto in lista_produtos:
-    print(produto.nome)
+# for produto in lista_produtos:
+#     print(produto.nome)
 
 espacos = []
 valores = []
@@ -34,4 +33,8 @@ for produto in lista_produtos:
 ag = AlgoritmoGenetico(tamanho_populacao)
 ag.inicializa_populacao(espacos, valores, limite)
 for i in range(ag.tamanho_populacao):
+    print("********\n")
     print(f"Individuo {i+1}: {ag.populacao[i].cromossomo}")
+    print(f"Espaço usado: {ag.populacao[i].espaco_usado}")
+    print(f"Nota: {ag.populacao[i].nota_avaliacao} \n")
+    print("******** \n")
