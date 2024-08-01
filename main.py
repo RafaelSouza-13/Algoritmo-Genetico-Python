@@ -32,6 +32,7 @@ for produto in lista_produtos:
 
 ag = AlgoritmoGenetico(tamanho_populacao)
 ag.inicializa_populacao(espacos, valores, limite)
-ag.melhor_individuo(ag.populacao[0])
 print(f"Melhor solução para o problema: {ag.melhor_solucao.cromossomo}")
 print(f"Nota: {ag.melhor_solucao.nota_avaliacao}")
+soma = ag.soma_avaliacoes()
+print(f"Soma das avaliacoes: {soma}")
