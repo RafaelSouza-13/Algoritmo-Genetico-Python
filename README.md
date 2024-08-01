@@ -38,7 +38,7 @@ Antes de começar, certifique-se de ter o Python 3.x instalado em seu sistema. V
         venv\Scripts\activate
 4. Instale as Dependências
     ```bash
-        pip install -r requirements.txt
+    pip install -r requirements.txt
 5. Configurar o banco de dados
 
     Utilize o arquivo **import.sql** para criar e alimentar o banco de dados.
