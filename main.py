@@ -16,8 +16,6 @@ lista_produtos.append(Produto("Geladeira Brastemp", 0.635, 849.00))
 lista_produtos.append(Produto("Geladeira Consul", 0.870, 1199.89))
 lista_produtos.append(Produto("Notebook Lenovo", 0.498, 1999.90))
 lista_produtos.append(Produto("Notebook Asus", 0.527, 3999.00))
-# for produto in lista_produtos:
-#     print(produto.nome)
 
 espacos = []
 valores = []
