@@ -50,4 +50,4 @@ class Individuo():
         return self
 
     def __str__(self) -> str:
-        return f"""Geracao: {self.geracao + 1} \nNota: {self.nota_avaliacao} \nespaço usado: {self.espaco_usado} \ncromossomo: {self.cromossomo}"""
+        return f"""Geracao: {self.geracao + 1} \nNota: {round(self.nota_avaliacao, 2)} \nEspaço usado: {round(self.espaco_usado, 2)} \nCromossomo: {self.cromossomo}"""

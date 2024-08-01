@@ -65,6 +65,13 @@ class AlgoritmoGenetico():
             print(self.melhores_por_geracoes[i])
             print()
     
+    def produtos_selecionados(self, individuo, nomes):
+        produtos = []
+        for i in range(len(individuo.cromossomo)):
+            if(individuo.cromossomo[i] == "1"):
+                produtos.append(nomes[i])
+        print(produtos)
+    
     def executa(self, espacos, valores, limite_espaco, numero_geracoes, taxa_mutacao):
         self.inicializa_populacao(espacos, valores, limite_espaco)
         for i in range(0, numero_geracoes - 1):
