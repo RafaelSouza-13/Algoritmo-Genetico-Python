@@ -33,12 +33,8 @@ for produto in lista_produtos:
     nomes.append(produto.nome)
 
 ag = AlgoritmoGenetico(tamanho_populacao)
-ag.inicializa_populacao(espacos, valores, limite)
+ag.executa(espacos, valores, limite, numero_geracoes, taxa_mutacao)
 
-for i in range(0, numero_geracoes - 1):
-    soma = ag.soma_avaliacoes()
-    ag.gera_individuos(soma, taxa_mutacao)
-    
 print("---------- Gerações ----------")
 ag.melhores()
 print("------------------------------")

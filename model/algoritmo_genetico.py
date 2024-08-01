@@ -64,5 +64,9 @@ class AlgoritmoGenetico():
         for i in range(len(self.melhores_por_geracoes)):
             print(self.melhores_por_geracoes[i])
             print()
-
-
+    
+    def executa(self, espacos, valores, limite_espaco, numero_geracoes, taxa_mutacao):
+        self.inicializa_populacao(espacos, valores, limite_espaco)
+        for i in range(0, numero_geracoes - 1):
+            soma = self.soma_avaliacoes()
+            self.gera_individuos(soma, taxa_mutacao)
